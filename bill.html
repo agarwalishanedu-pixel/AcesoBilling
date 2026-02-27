@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comprehensive Hospital Bill</title>
+    <style>
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; margin: 30px; color: #111; line-height: 1.3; }
+        .header-container { display: flex; justify-content: space-between; border-bottom: 3px solid #005A9C; padding-bottom: 15px; margin-bottom: 15px; }
+        .logo-area h1 { margin: 0; font-size: 22px; color: #005A9C; letter-spacing: 1px; }
+        .logo-area h2 { margin: 3px 0 0 0; font-size: 12px; color: #555; }
+        .hospital-details { text-align: right; font-size: 10px; color: #444; }
+        .title-bar { background-color: #005A9C; color: white; padding: 5px 10px; font-weight: bold; font-size: 12px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .info-grid { display: flex; justify-content: space-between; margin-bottom: 20px; }
+        .info-box { border: 1px solid #aaa; width: 48%; padding: 10px; border-radius: 4px; }
+        .info-box table { width: 100%; border: none; font-size: 10px; margin: 0; }
+        .info-box td { padding: 3px 0; border: none; }
+        .info-box .label { font-weight: bold; width: 40%; color: #333; }
+        .main-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-family: 'Courier New', Courier, monospace; font-size: 9.5px; }
+        .main-table th { background-color: #e6f0fa; border-top: 1px solid #000; border-bottom: 1px solid #000; padding: 8px 4px; text-align: left; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 9px; color: #005A9C; }
+        .main-table td { border-bottom: 1px solid #eee; padding: 6px 4px; vertical-align: top; }
+        .main-table .num { text-align: right; }
+        .main-table .target-row { background-color: #fff0f0; font-weight: bold; border-left: 3px solid #d9534f; }
+        .totals-section { display: flex; justify-content: flex-end; margin-bottom: 30px; }
+        .totals-box { width: 350px; border: 2px solid #005A9C; padding: 10px; border-radius: 4px; background-color: #fafafa; }
+        .totals-box table { width: 100%; font-size: 11px; }
+        .totals-box td { padding: 4px 0; border: none; }
+        .totals-box .amount { text-align: right; }
+        .totals-box .final-row { border-top: 2px solid #000; font-weight: bold; font-size: 14px; padding-top: 8px; margin-top: 5px; color: #d9534f; }
+        .fine-print { font-size: 8px; color: #666; text-align: justify; border-top: 1px solid #ccc; padding-top: 10px; column-count: 2; column-gap: 20px; }
+        .legal-notice { border: 1px solid #d9534f; padding: 10px; background-color: #fdf7f7; margin-bottom: 20px; }
+        .legal-notice strong { color: #d9534f; font-size: 11px; }
+        .page-break { page-break-inside: avoid; }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <div class="logo-area">
+            <h1>CITY GENERAL HOSPITAL</h1>
+            <h2>Regional Medical Center & Maternity Ward</h2>
+        </div>
+        <div class="hospital-details">
+            1240 Healthway Drive, Suite 400<br>
+            Metropolis, NY 10001<br>
+            Billing Dept: (800) 555-0199 | M-F 8am-6pm EST<br>
+            Tax ID: 88-1234567 | Facility NPI: 1098765432<br>
+            Web: www.citygeneralbilling.com/pay
+        </div>
+    </div>
+
+    <div class="title-bar">Comprehensive Itemized Statement of Account</div>
+
+    <div class="info-grid">
+        <div class="info-box">
+            <table>
+                <tr><td class="label">Guarantor Name:</td><td>Sarah Jenkins</td></tr>
+                <tr><td class="label">Patient Name:</td><td>Sarah Jenkins</td></tr>
+                <tr><td class="label">Address:</td><td>4421 Willow Lane, Apt 3B<br>Metropolis, NY 10002</td></tr>
+                <tr><td class="label">Patient DOB:</td><td>05/14/1994 (Age 31)</td></tr>
+                <tr><td class="label">Account No:</td><td><strong>4009-8821-001</strong></td></tr>
+                <tr><td class="label">Medical Record (MRN):</td><td>99482026</td></tr>
+            </table>
+        </div>
+        <div class="info-box">
+            <table>
+                <tr><td class="label">Statement Date:</td><td>02/12/2026</td></tr>
+                <tr><td class="label">Admit Date/Time:</td><td>01/15/2026 08:14 AM</td></tr>
+                <tr><td class="label">Discharge Date/Time:</td><td>01/17/2026 11:30 AM</td></tr>
+                <tr><td class="label">Attending Provider:</td><td>Emily Carter, MD (NPI: 1122334455)</td></tr>
+                <tr><td class="label">Primary Insurance:</td><td>Apex HealthGuard PPO (Grp: TX-99482)</td></tr>
+                <tr><td class="label">Prior Auth No:</td><td>AUTH-774892-MAT</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <table class="main-table">
+        <thead>
+            <tr>
+                <th>SVC DATE</th>
+                <th>REV</th>
+                <th>DESCRIPTION</th>
+                <th>CPT/HCPCS</th>
+                <th>PROVIDER/NPI</th>
+                <th class="num">QTY</th>
+                <th class="num">GROSS CHARGE</th>
+                <th class="num">PLAN PAYS</th>
+                <th class="num">ADJUSTMENT</th>
+                <th class="num">PT RESP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>01/15/26</td><td>0111</td><td>ROOM & BOARD - MATERNITY</td><td>-</td><td>City Gen/1098765432</td><td class="num">1</td><td class="num">$1,600.00</td><td class="num">-$1,200.00</td><td class="num">-$400.00</td><td class="num">$0.00</td></tr>
+            <tr><td>01/15/26</td><td>0250</td><td>PHARMACY - OXYTOCIN/PITOCIN INJ</td><td>J2590</td><td>City Gen/1098765432</td><td class="num">2</td><td class="num">$120.00</td><td class="num">-$90.00</td><td class="num">-$30.00</td><td class="num">$0.00</td></tr>
+            <tr><td>01/15/26</td><td>0250</td><td>PHARMACY - SODIUM CHLORIDE 0.9% IV</td><td>J7030</td><td>City Gen/1098765432</td><td class="num">4</td><td class="num">$450.00</td><td class="num">-$350.00</td><td class="num">-$100.00</td><td class="num">$0.00</td></tr>
+            <tr><td>01/15/26</td><td>0300</td><td>LAB - COMPREHENSIVE METABOLIC PANEL</td><td>80053</td><td>City Gen/1098765432</td><td class="num">1</td><td class="num">$185.00</td><td class="num">-$115.00</td><td class="num">-$70.00</td><td class="num">$0.00</td></tr>
+            <tr><td>01/15/26</td><td>0300</td><td>LAB - CBC W/ DIFFERENTIAL</td><td>85025</td><td>City Gen/1098765432</td><td class="num">1</td><td class="num">$140.00</td><td class="num">-$80.00</td><td class="num">-$60.00</td><td class="num">$0.00</td></tr>
+            <tr><td>01/15/26</td><td>0300</td><td>LAB - BLOOD TYPING ABO</td><td>86900</td><td>City Gen/1098765432</td><td class="num">1</td><td class="num">$95.00</td><td class="num">-$60.00</td><td class="num">-$35.00</td><td class="num">$0.00</td></tr>
+            <tr><td>01/15/26</td><td>0720</td><td>LABOR ROOM/DELIVERY RM</td><td>59409</td><td>Carter, Emily/1122334455</td><td class="num">1</td><td class="num">$5,500.00</td><td class="num">-$4,000.00</td><td class="num">-$1,500.00</td><td class="num">$0.00</td></tr>
+            <tr><td>01/15/26</td><td>0722</td><td>FETAL MONITORING - CONTINUOUS</td><td>59020</td><td>City Gen/1098765432</td><td class="num">1</td><td class="num">$650.00</td><td class="num">-$450.00</td><td class="num">-$200.00</td><td class="num">$0.00</td></tr>
+            
+            <tr class="target-row"><td>01/15/26</td><td>0370</td><td>ANESTHESIA - NEURAXIAL/EPIDURAL</td><td>01967</td><td>Metro Anesth/988776655</td><td class="num">1</td><td class="num">$3,500.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$3,500.00</td></tr>
+            
+            <tr><td>01/15/26</td><td>0270</td><td>MED/SURG SUPPLIES - CATHETER</td><td>A4338</td><td>City Gen/1098765432</td><td class="num">1</td><td class="num">$120.00</td><td class="num">-$80.00</td><td class="num">-$40.00</td><td class="num">$0.00</td></tr>
+            <tr><td>01/16/26</td><td>0111</td><td>ROOM & BOARD - MATERNITY</td><td>-</td><td>City Gen/1098765432</td><td class="num">1</td><td class="num">$1,600.00</td><td class="num">-$1,200.00</td><td class="num">-$400.00</td><td class="num">$0.00</td></tr>
+            <tr><td>01/16/26</td><td>0170</td><td>ROOM & BOARD - NURSERY</td><td>99460</td><td>City Gen/1098765432</td><td class="num">1</td><td class="num">$1,200.00</td><td class="num">-$800.00</td><td class="num">-$400.00</td><td class="num">$0.00</td></tr>
+            <tr><td>01/16/26</td><td>0250</td><td>PHARMACY - IBUPROFEN 600MG</td><td>J0000</td><td>City Gen/1098765432</td><td class="num">3</td><td class="num">$45.00</td><td class="num">-$35.00</td><td class="num">-$10.00</td><td class="num">$0.00</td></tr>
+            <tr><td>01/16/26</td><td>0770</td><td>PREVENTIVE - LACTATION CONSULT</td><td>99401</td><td>City Gen/1098765432</td><td class="num">1</td><td class="num">$180.00</td><td class="num">-$130.00</td><td class="num">-$50.00</td><td class="num">$0.00</td></tr>
+            <tr><td>01/16/26</td><td>0730</td><td>EKG / ECG - NEWBORN SCREENING</td><td>93000</td><td>City Gen/1098765432</td><td class="num">1</td><td class="num">$350.00</td><td class="num">-$250.00</td><td class="num">-$100.00</td><td class="num">$0.00</td></tr>
+            <tr><td>01/17/26</td><td>0770</td><td>HEARING SCREENING - NEWBORN</td><td>92558</td><td>City Gen/1098765432</td><td class="num">1</td><td class="num">$215.00</td><td class="num">-$165.00</td><td class="num">-$50.00</td><td class="num">$0.00</td></tr>
+        </tbody>
+    </table>
+
+    <div class="page-break">
+        <div class="legal-notice">
+            <strong>OUT-OF-NETWORK BALANCE BILLING NOTICE (REF: CPT 01967)</strong><br>
+            <p style="margin-top: 5px; font-size: 10px; line-height: 1.4; color: #333;">Please be advised that the claim line item for Revenue Code 0370 / CPT 01967 (Anesthesia - Neuraxial/Epidural) was rendered by Dr. Aris Thorne of Metro Anesthesia Associates LLC. This provider group operates independently within City General Hospital and is <strong>NOT contracted</strong> with your insurance network, Apex HealthGuard PPO. Your insurance plan denied the out-of-network coverage portion for this specific provider entity. Under the terms of your policy and provider billing practices, you are responsible for the remainder of this out-of-network charge. Failure to remit the balance of $3,500.00 by 03/14/2026 may result in the transfer of this account to a third-party collections agency.</p>
+        </div>
+
+        <div class="totals-section">
+            <div class="totals-box">
+                <table>
+                    <tr><td>Total Billed Charges:</td><td class="amount">$15,950.00</td></tr>
+                    <tr><td>In-Network Contractual Adjustments:</td><td class="amount">-$3,445.00</td></tr>
+                    <tr><td>Insurance Paid (Apex HealthGuard PPO):</td><td class="amount">-$9,005.00</td></tr>
+                    <tr><td>Prior Payments / Patient Copay:</td><td class="amount">$0.00</td></tr>
+                    <tr><td class="final-row">AMOUNT DUE FROM PATIENT:</td><td class="final-row amount">$3,500.00</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="fine-print">
+            <strong>FINANCIAL ASSISTANCE:</strong> If you cannot pay your bill in full, City General Hospital offers financial assistance programs. You may qualify for free or discounted care based on family size and income. Contact our Financial Counseling Office at (800) 555-0200. <strong>ERRORS OR OMISSIONS:</strong> Please review this statement carefully. If you believe there is an error, you must contact us within 60 days of the statement date. <strong>PAYMENT TERMS:</strong> Payment is due upon receipt. We accept Visa, MasterCard, Discover, HSA/FSA cards, and personal checks. Returned checks are subject to a $35.00 fee. <strong>ASSIGNMENT OF BENEFITS:</strong> By receiving treatment, you assign all insurance benefits to City General Hospital and agree to be personally responsible for any unpaid balances not covered by your carrier.
+        </div>
+    </div>
+
+</body>
+</html>
